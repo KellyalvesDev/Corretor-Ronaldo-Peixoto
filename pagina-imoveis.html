@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todos os Imóveis - Ronaldo Peixoto</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro&display=swap">
+</head>
+<body>
+<header>
+  <div class="container">
+    <img src="logo branca.png" alt="Logo do Corretor" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="pagina-imoveis.html" class="active">Imóveis</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button id="modo-noturno-toggle">🌙</button>
+  </div>
+</header>
+
+<section class="imoveis">
+  <div class="container">
+    <h2>Todos os Imóveis</h2>
+    <div class="filtros">
+      <input type="text" id="bairro" placeholder="Filtrar por bairro">
+      <input type="number" id="valor" placeholder="Valor máximo (R$)">
+      <input type="number" id="metragem" placeholder="Mínimo de m²">
+      <button onclick="filtrarImoveis()">Filtrar</button>
+    </div>
+    <div id="lista-imoveis" class="lista-imoveis"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Ronaldo Peixoto. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
