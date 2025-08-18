@@ -12,7 +12,7 @@ if (document.querySelector('.swiper')) {
 // Lista de imóveis
 const imoveis = [
   { id: 1, bairro: 'Imóvel a venda no Centro', valor: 350000, metragem: 85, quartos: 3, vagas: 1, imagem: 'imovel 01.jpg', descricao: 'Apartamento 3 quartos no Centro, com ótima iluminação natural e fácil acesso a comércios e serviços.' },
-  { id: 2, bairro: 'Casa exelênte no Jardins', valor: 450000, metragem: 120, quartos: 4, vagas: 2, imagem: 'imovel 02.jpg', descricao: 'Casa com quintal espaçoso nos Jardins, ideal para famílias que gostam de receber visitas e aproveitar áreas externas.' },
+  { id: 2, bairro: 'Casa excelente no Jardins', valor: 450000, metragem: 120, quartos: 4, vagas: 2, imagem: 'imovel 02.jpg', descricao: 'Casa com quintal espaçoso nos Jardins, ideal para famílias que gostam de receber visitas e aproveitar áreas externas.' },
   { id: 3, bairro: 'Imóvel a venda no Centro', valor: 250000, metragem: 45, quartos: 1, vagas: 0, imagem: 'imovel 03.jpg', descricao: 'Kitnet compacta e moderna, perfeita para estudantes ou profissionais que buscam praticidade.' },
   { id: 4, bairro: 'Descubra o Charme da Vila Nova', valor: 300000, metragem: 65, quartos: 2, vagas: 1, imagem: 'imovel 04.jpg', descricao: 'Sobrado aconchegante com garagem e fácil acesso a escolas e mercados.' },
   { id: 5, bairro: 'Viva no Jardim Europa', valor: 520000, metragem: 140, quartos: 3, vagas: 2, imagem: 'CP 6.jpg', descricao: 'Casa ampla com área gourmet e churrasqueira, perfeita para momentos em família no Jardim Europa.' },
@@ -24,11 +24,14 @@ const imoveis = [
 ];
 
 // Função para exibir lista de imóveis
-function exibirImoveis(lista) {
+function exibirImoveis(lista, limite = null) {
   const container = document.getElementById('lista-imoveis');
   if (!container) return;
   container.innerHTML = '';
-  lista.forEach(imovel => {
+
+  const listaExibir = limite ? lista.slice(0, limite) : lista;
+
+  listaExibir.forEach(imovel => {
     const card = document.createElement('div');
     card.className = 'card-imovel';
     card.innerHTML = `
@@ -59,7 +62,7 @@ function filtrarImoveis() {
   exibirImoveis(filtrados);
 }
 
-// Função para carregar detalhes do imóvel
+// Carregar detalhes do imóvel
 function carregarDetalhesImovel() {
   const container = document.getElementById('detalhes-imovel');
   if (!container) return;
@@ -85,10 +88,9 @@ function carregarDetalhesImovel() {
   }
 }
 
-// Função de envio para WhatsApp
+// Envio WhatsApp
 function enviarParaWhatsapp(event) {
   event.preventDefault();
-
   const nome = document.getElementById('nome')?.value;
   const telefone = document.getElementById('telefone')?.value;
   const mensagem = document.getElementById('mensagem')?.value;
@@ -100,7 +102,7 @@ function enviarParaWhatsapp(event) {
   window.open(url, '_blank');
 }
 
-// Botão modo noturno
+// Botão modo noturno (apenas UM trecho!)
 const toggleBtn = document.getElementById('modo-noturno-toggle');
 if (toggleBtn) {
   toggleBtn.addEventListener('click', () => {
@@ -108,75 +110,19 @@ if (toggleBtn) {
   });
 }
 
-// ---- Execução automática conforme a página ----
+// ---- Execução automática ----
 document.addEventListener("DOMContentLoaded", () => {
-  // Se a página tiver lista de imóveis
   if (document.getElementById('lista-imoveis')) {
-    exibirImoveis(imoveis);
+    // Se for a página inicial: mostra só 6
+    if (window.location.pathname.includes("index.html") || window.location.pathname === "/") {
+      exibirImoveis(imoveis, 6);
+    } else {
+      // Na página "imoveis": mostra todos
+      exibirImoveis(imoveis);
+    }
   }
 
-  // Se a página for de detalhes
   if (document.getElementById('detalhes-imovel')) {
     carregarDetalhesImovel();
   }
 });
-
-
-// Exibe os imóveis
-function exibirImoveis(lista) {
-  const container = document.getElementById('lista-imoveis');
-  container.innerHTML = '';
-  lista.forEach(imovel => {
-    const card = document.createElement('div');
-    card.className = 'card-imovel';
-    card.innerHTML = `
-      <img src="${imovel.imagem}" alt="Imagem do imóvel">
-      <h3>${imovel.bairro}</h3>
-      <p>${imovel.descricao}</p>
-      <p><strong>${imovel.metragem} m²</strong> | ${imovel.quartos} quartos | ${imovel.vagas} vagas</p>
-      <strong>R$ ${imovel.valor.toLocaleString()}</strong>
-      <a href="pagina-imovel.html?id=${imovel.id}" class="botao-ver-mais">Ver mais →</a>
-    `;
-    container.appendChild(card);
-  });
-}
-
-exibirImoveis(imoveis);
-
-// Filtro de imóveis
-function filtrarImoveis() {
-  const bairro = document.getElementById('bairro').value.toLowerCase();
-  const valorMax = parseFloat(document.getElementById('valor').value);
-  const metragemMin = parseFloat(document.getElementById('metragem').value);
-
-  const filtrados = imoveis.filter(imovel => {
-    const bairroOk = bairro === '' || imovel.bairro.toLowerCase().includes(bairro);
-    const valorOk = isNaN(valorMax) || imovel.valor <= valorMax;
-    const metragemOk = isNaN(metragemMin) || imovel.metragem >= metragemMin;
-    return bairroOk && valorOk && metragemOk;
-  });
-
-  exibirImoveis(filtrados);
-}
-
-// Envio para WhatsApp
-function enviarParaWhatsapp(event) {
-  event.preventDefault();
-
-  const nome = document.getElementById('nome').value;
-  const telefone = document.getElementById('telefone').value;
-  const mensagem = document.getElementById('mensagem').value;
-
-  const texto = `Olá, meu nome é ${nome} e gostaria de saber mais informações sobre os imóveis disponíveis.`;
-  const numeroCorretor = '5562999373877'; // Substitua pelo número real
-
-  const url = `https://wa.me/${numeroCorretor}?text=${encodeURIComponent(texto)}`;
-  window.open(url, '_blank');
-}
-
-// Modo noturno
-if (toggleBtn) {
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-  });
-}
