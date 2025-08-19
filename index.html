@@ -1,5 +1,3 @@
-INDEX.HTML
-
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,33 +31,7 @@ INDEX.HTML
 </nav>
       <button id="modo-noturno-toggle">🌙</button>
     </div>
-<header>
-  <! -- Botão hamburguer -- >
-  <button id="menu-btn">☰</button>
-
-  <!-- Seu menu -->
-  <ul id="menu" class="hidden">
-    <li><a href="#">Sobre</a></li>
-    <li><a href="#">Imóveis</a></li>
-    <li><a href="#">Contato</a></li>
-  </ul>
-</header>
   </header>
-
-  <header>
-  <div class="logo">LOGO</div>
-
-  <div class="menu-direita">
-    <button class="modo-noturno">🌙</button>
-    <button class="hamburger">☰</button>
-  </div>
-
-  <ul class="menu">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#imoveis">Imóveis</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
-</header>
 
   <section class="capa swiper">
     <div class="swiper-wrapper">
@@ -128,20 +100,6 @@ INDEX.HTML
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
-
-  <script>
-  document.getElementById("menu-btn").addEventListener("click", function() {
-    document.getElementById("menu").classList.toggle("hidden");
-  });
-</script>
-
-<script>
-  const hamburger = document.querySelector(".hamburger");
-  const menu = document.querySelector(".menu");
-
-  hamburger.addEventListener("click", () => {
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-  });
-</script>
 </body>
 </html>
+
