@@ -31,6 +31,17 @@
 </nav>
       <button id="modo-noturno-toggle">🌙</button>
     </div>
+<header>
+  <! -- Botão hamburguer -- >
+  <button id="menu-btn">☰</button>
+
+  <!-- Seu menu -->
+  <ul id="menu" class="hidden">
+    <li><a href="#">Sobre</a></li>
+    <li><a href="#">Imóveis</a></li>
+    <li><a href="#">Contato</a></li>
+  </ul>
+</header>
   </header>
 
   <section class="capa swiper">
@@ -100,6 +111,12 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
+
+  <script>
+  document.getElementById("menu-btn").addEventListener("click", function() {
+    document.getElementById("menu").classList.toggle("hidden");
+  });
+</script>
 </body>
 </html>
 
