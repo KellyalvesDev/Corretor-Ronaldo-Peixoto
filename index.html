@@ -1,146 +1,64 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ronaldo Peixoto - Corretor de Imóveis</title>
+  <title>Corretor de Imóveis - Início</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro&display=swap">
-
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="container">
       <img src="logo branca.png" alt="Logo do Corretor" class="logo">
-      <nav>
-        <ul>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="pagina-imoveis.html">Imóveis</a></li>
-          <!-- Contato com dropdown -->
-    <li class="dropdown">
-      <a href="#contato">Contato ▾</a>
-      <ul class="dropdown-menu">
-        <li><a href="#contato">Formulário</a></li>
-        <li><a href="https://wa.me/5562999373877" target="_blank">WhatsApp</a></li>
-        <li><a href="mailto:roanldopsf@gmail.com">E-mail</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-      <button id="modo-noturno-toggle">🌙</button>
-    </div>
-<header>
-  <! -- Botão hamburguer -- >
-  <button id="menu-btn">☰</button>
 
-  <!-- Seu menu -->
-  <ul id="menu" class="hidden">
-    <li><a href="#">Sobre</a></li>
-    <li><a href="#">Imóveis</a></li>
-    <li><a href="#">Contato</a></li>
-  </ul>
-</header>
+      <nav>
+        <!-- Menu desktop -->
+        <ul class="desktop">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="pagina-imovel.html">Imóveis</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+
+        <!-- Menu mobile -->
+        <ul class="mobile">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="pagina-imovel.html">Imóveis</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <button id="modo-noturno-toggle">🌙</button>
+        <button id="menu-toggle">☰</button>
+      </div>
+    </div>
   </header>
 
-  <header>
-  <div class="logo">LOGO</div>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+    <section>
+      <h1>Bem-vindo ao site do Corretor</h1>
+      <p>Aqui você encontra os melhores imóveis da região.</p>
+      <img src="banner.jpg" alt="Imagem de imóveis">
+    </section>
+  </main>
 
-  <div class="menu-direita">
-    <button class="modo-noturno">🌙</button>
-    <button class="hamburger">☰</button>
-  </div>
-
-  <ul class="menu">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#imoveis">Imóveis</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
-</header>
-
-  <section class="capa swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="CP 1.jpg" alt="Capa 1"></div>
-      <div class="swiper-slide"><img src="CP 2.jpg" alt="Capa 2"></div>
-      <div class="swiper-slide"><img src="CP 3.jpg" alt="Capa 3"></div>
-      <div class="swiper-slide"><img src="CP 4.jpg" alt="Capa 4"></div>
-      <div class="swiper-slide"><img src="CP 5.jpg" alt="Capa 5"></div>
-    </div>
+  <!-- CONTATO -->
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <form>
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu e-mail" required>
+      <textarea placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
   </section>
 
-  <section id="imoveis" class="imoveis">
-  <div class="container">
-    <h2>Imóveis disponíveis</h2>
-
-
-<div class="filtros">
-  <input type="text" id="bairro" placeholder="Filtrar por bairro">
-  <input type="number" id="valor" placeholder="Valor máximo (R$)">
-  <input type="number" id="metragem" placeholder="Mínimo de m²">
-  <button onclick="filtrarImoveis()">Filtrar</button>
-</div>
-
-      <div id="lista-imoveis" class="lista-imoveis">
-        <!-- Os imóveis serão inseridos aqui com JS -->    
-    </div>
-    <div class="mais-imoveis">
-  <a href="pagina-imoveis.html">Mais →</a>
-  </section>
-
-  <section id="contato" class="contato">
-    <div class="container">
-      <h2>Fale comigo!</h2>
-      <form onsubmit="enviarParaWhatsapp(event)">
-        <input type="text" id="nome" placeholder="Seu nome" required>
-        <input type="text" id="telefone" placeholder="Seu telefone" required>
-        <textarea id="mensagem" placeholder="Digite sua mensagem"></textarea>
-        <button type="submit">Enviar para WhatsApp</button>
-      </form>
-    </div>
-  </section>
-
-  <section class="acompanhe">
-    <div class="container">
-      <h2>Me acompanhe nas redes sociais.</h2>
-      <div class="redes-sociais">
-        <a href="https://www.instagram.com/ronaldo.psf/" target="_blank">
-        <img src="IG.jpg" alt="Instagram" class="icone-social">
-        </a>
-        <a href="https://tiktok.com/@ronald_stefani" target="_blank">
-        <img src="FB.png" alt="Facebook" class="icone-social">
-        </a>
-        <a href="https://facebook.com/ronaldopeixotostefani.filho" target="_blank">
-        <img src="TK.png" alt="TikTok" class="icone-social">
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>© 2025 Ronaldo Peixoto. Todos os direitos reservados.</p>
-      <div class="redes">
-      </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
-
-  <script>
-  document.getElementById("menu-btn").addEventListener("click", function() {
-    document.getElementById("menu").classList.toggle("hidden");
-  });
-</script>
-
-<script>
-  const hamburger = document.querySelector(".hamburger");
-  const menu = document.querySelector(".menu");
-
-  hamburger.addEventListener("click", () => {
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-  });
-</script>
 </body>
 </html>
 
