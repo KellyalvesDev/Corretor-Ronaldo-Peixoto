@@ -1,59 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imóveis - Corretor de Imóveis</title>
+  <title>Detalhes do Imóvel - Ronaldo Peixoto</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro&display=swap">
 </head>
 <body>
+<header>
+  <div class="container">
+    <img src="logo branca.png" alt="Logo do Corretor" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="pagina-imoveis.html">Imóveis</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button id="modo-noturno-toggle">🌙</button>
+  </div>
+</header>
 
-  <!-- HEADER -->
-  <header>
-    <div class="container">
-      <img src="logo branca.png" alt="Logo do Corretor" class="logo">
+<section class="imovel-detalhe">
+  <div class="container" id="detalhes-imovel">
+    <!-- Detalhes do imóvel serão carregados via JS -->
+  </div>
+</section>
 
-      <nav>
-        <ul class="desktop">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="pagina-imovel.html">Imóveis</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-        <ul class="mobile">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="pagina-imovel.html">Imóveis</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
+<footer>
+  <div class="container">
+    <p>© 2025 Ronaldo Peixoto. Todos os direitos reservados.</p>
+  </div>
+</footer>
 
-      <div>
-        <button id="modo-noturno-toggle">🌙</button>
-        <button id="menu-toggle">☰</button>
-      </div>
-    </div>
-  </header>
+<script src="script.js"></script>
+<script>
+  // Pega o ID da URL
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
 
-  <!-- CONTEÚDO -->
-  <main>
-    <section>
-      <h1>Imóveis Disponíveis</h1>
-      <article>
-        <img src="imovel1.jpg" alt="Imagem do imóvel 1">
-        <h2>Apartamento no Centro</h2>
-        <p>2 quartos, 1 suíte, sala ampla, garagem.</p>
-      </article>
+  // Busca o imóvel no array
+  const imovel = imoveis.find(item => item.id === id);
 
-      <article>
-        <img src="imovel2.jpg" alt="Imagem do imóvel 2">
-        <h2>Casa com quintal</h2>
-        <p>3 quartos, 2 banheiros, área de lazer.</p>
-      </article>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+  if (imovel) {
+    document.getElementById("detalhes-imovel").innerHTML = `
+      <h2>${imovel.bairro}</h2>
+      <img src="${imovel.imagem}" alt="Imagem do imóvel" style="width:100%; max-width:600px; border-radius:8px;">
+      <p><strong>Descrição:</strong> ${imovel.descricao}</p>
+      <p><strong>Metragem:</strong> ${imovel.metragem} m²</p>
+      <p><strong>Quartos:</strong> ${imovel.quartos}</p>
+      <p><strong>Vagas:</strong> ${imovel.vagas}</p>
+      <p><strong>Valor:</strong> R$ ${imovel.valor.toLocaleString()}</p>
+      <p><strong>Código do Imóvel:</strong> ${imovel.id}</p>
+      <a href="https://wa.me/5562999373877?text=Olá, tenho interesse no imóvel código ${imovel.id}" target="_blank" class="botao-ver-mais">Falar no WhatsApp</a>
+    `;
+  } else {
+    document.getElementById("detalhes-imovel").innerHTML = `<p>Imóvel não encontrado.</p>`;
+  }
+</script>
 </body>
 </html>
-
