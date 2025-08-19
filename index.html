@@ -44,6 +44,21 @@
 </header>
   </header>
 
+  <header>
+  <div class="logo">LOGO</div>
+
+  <div class="menu-direita">
+    <button class="modo-noturno">🌙</button>
+    <button class="hamburger">☰</button>
+  </div>
+
+  <ul class="menu">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#imoveis">Imóveis</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</header>
+
   <section class="capa swiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide"><img src="CP 1.jpg" alt="Capa 1"></div>
@@ -115,6 +130,15 @@
   <script>
   document.getElementById("menu-btn").addEventListener("click", function() {
     document.getElementById("menu").classList.toggle("hidden");
+  });
+</script>
+
+<script>
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+
+  hamburger.addEventListener("click", () => {
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
   });
 </script>
 </body>
